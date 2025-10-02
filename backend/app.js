@@ -2,6 +2,7 @@ const express = require('express')
 const log = require("./middleware/global")
 const errorHandler = require("./middleware/errorHandler")
 const handler404 = require("./middleware/handler404")
+const productsRoute = require("./routes/productsRoute")
 
 const app = express()
 const port = 3000
@@ -10,9 +11,7 @@ const port = 3000
 app.use(log)
 app.use(express.json())
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.use("/api/productos", productsRoute)
 // Uso del manejador del recurso no encontrado
 app.use(handler404)
 

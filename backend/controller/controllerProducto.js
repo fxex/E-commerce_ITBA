@@ -1,10 +1,13 @@
 class ControladorProducto {
-    constructor(productos){
-        this.productos = productos
+    constructor(){
+        this._productos = []
     }
 
     get productos(){
-        return this.productos
+        return this._productos
+    }
+    set productos(value){
+        this._productos = value
     }
 
     obtenerProductosId(id_producto){
