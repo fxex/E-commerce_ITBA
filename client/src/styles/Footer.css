@@ -1,0 +1,92 @@
+.footer_container{
+    width: 100%;
+    height: 60px;
+    background-color: #D4A437;
+    padding-left: 10px;
+    padding-top: 5px;
+    font-size: 13px;
+}
+
+.instagram_container{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    color: black;
+}
+.logo_instagram{
+    height: 12px;
+
+}
+.instagram a{
+    text-decoration: none;
+    color: black;
+    margin: 5px;
+}
+
+.numero_container{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    color: black;
+}
+
+.logo_numero{
+    height: 12px;
+}
+.numero a{
+    text-decoration: none;
+    color: black;
+    margin: 5px;
+
+}
+
+.copy_text {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 5px; /* opcional, para separarlo del resto */
+}
+
+@media (min-width: 768px) {
+    .footer_container {
+    font-size: 15px;
+    height: auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .instagram_container,
+  .numero_container {
+    width: auto;
+  }
+
+  .copy_text {
+    margin-top: 0;
+    width: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+    .footer_container {
+    font-size: 16px;
+    height: auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .instagram_container,
+  .numero_container {
+    width: auto;
+  }
+
+  .copy_text {
+    margin-top: 0;
+    width: auto;
+  }
+}

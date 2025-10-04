@@ -1,32 +1,25 @@
-# dependencies
-/node_modules
-
-# build output
-/build
-/dist
-/out
-
-# local environment variables
-.env
-.env.local
-.env.*.local
-
-# logs
+# Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# misc
+consigna.txt
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
 .DS_Store
-Thumbs.db
-.idea/
-.vscode/
-
-# test coverage
-/coverage
-
-# Storybook build output (if applicable)
-/storybook-static
-
-# next.js specific (if applicable)
-.next/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

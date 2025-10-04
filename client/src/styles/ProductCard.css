@@ -1,0 +1,51 @@
+.card{
+    background-color: #eee;
+    border-radius: 1em;
+    height: fit-content;
+    width: 80%;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.card_body{
+    text-align: justify;
+
+}
+
+.card_title{
+    font-size: 2em;
+    text-align: center;
+}
+
+.card_img {
+    width: 15em;
+}
+
+.card_text{
+    font-size: 1em;
+}
+
+.card_button{
+    background: none;
+    border: none;
+    padding: 10px;
+    background-color: #D4A437;
+    margin-top: 1em;
+    border-radius: 20px;
+}
+
+@media (min-width: 600px) {
+    .card{
+        flex-wrap: nowrap;
+        height: 80%;
+        gap: 30px;
+    }
+
+    .card_img{
+        width: 25em;
+    }
+    
+}
