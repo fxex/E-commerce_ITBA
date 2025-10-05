@@ -13,7 +13,7 @@ function BarraNavegacion(){
                     <li><a >Productos</a></li>
                     <li><a >Contacto</a></li>
                     <li><a id="carrito">
-                        <img src={logoCarrito} alt="carrito de compra" className="nav_carrito"/>
+                        <img src={logoCarrito} alt="carrito de compra" className="nav_carrito"/> 0
                     </a></li>
 
                 </ul>
