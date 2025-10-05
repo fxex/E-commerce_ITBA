@@ -11,7 +11,7 @@ function ProductDetail({ producto, agregarAlCarrito, verMenos }) {
       <p>{descripcion}</p>
       <p>Materiales: {materiales}</p>
       <p>Tamaño: {tamaño}</p>
-      <button onClick={() => agregarAlCarrito(producto)}>Añadir al carrito</button>
+      <button onClick={() => agregarAlCarrito((prevState) => [...prevState, producto])}>Añadir al carrito</button>
       <button onClick={verMenos}>Ver menos</button>
     </div>
   );

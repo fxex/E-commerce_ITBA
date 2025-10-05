@@ -8,6 +8,13 @@
 
 .title{
     color: black;
-    align-content: center;
-    
+    align-content: center;   
+}
+
+.vista_productos{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
