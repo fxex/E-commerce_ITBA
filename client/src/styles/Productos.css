@@ -1,0 +1,13 @@
+.contenedor_productos{
+    width: 100vw;
+    position: relative;
+    background-color: #ffffff;
+    height: 100%;
+    display: flex;
+}
+
+.title{
+    color: black;
+    align-content: center;
+    
+}
