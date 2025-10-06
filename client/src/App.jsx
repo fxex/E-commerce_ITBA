@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.css'
 
 //Todos los componentes
 import Inicio from './pages/Inicio'
