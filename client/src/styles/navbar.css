@@ -7,6 +7,7 @@
 .navegacion_container{
     display: flex;
     height: 45px;
+    width: 100vw;
     background-color: #F5E6D3;
     justify-content: space-between;
 }
@@ -33,11 +34,39 @@
 .navegacion_links li a{
     text-decoration: none;
     color: 	#A0522D;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold;
     font-family: Light;
 }
+.Botones_navegacion {
+  background-color: transparent;
+  border: 1.5px solid #A0522D;
+  color: #A0522D;
+  font-size: 0.65rem;
+  font-weight: 600;
+  font-family: 'Georgia', serif;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
 
+.Botones_navegacion:hover {
+  background-color: #A0522D;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.Botones_navegacion:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(160, 82, 45, 0.3);
+}
+
+
+#carrito{
+  padding-right: 8px;
+}
 .nav_carrito{
     width: 20px;
     height: 20px;
@@ -60,8 +89,20 @@
   }
 
   .navegacion_links li a {
-    font-size: 18px;
+    font-size: 25px;
   }
+  .Botones_navegacion {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+  .nav_carrito{
+    width: 25px;
+    height: 25px;
+}
+#carrito{
+  padding-right: 0px;
+  padding-left: 5px;
+}
   
 }
 @media (min-width: 1024px) {

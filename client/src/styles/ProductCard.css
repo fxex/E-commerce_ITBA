@@ -2,7 +2,7 @@
     background-color: #eee;
     border-radius: 1em;
     height: fit-content;
-    width: 80%;
+    width: 90%;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -11,24 +11,26 @@
 }
 
 .card_body{
-    text-align: justify;
+    text-align: left;
+ 
 
 }
 
 .card_title{
-    font-size: 2em;
+    font-size: 1.2em;
     text-align: center;
 }
 
 .card_img {
-    width: 15em;
+    width: 9em;
 }
 
 .card_text{
-    font-size: 1em;
+    font-size: 20px;
 }
 
 .card_button{
+    font-size: 10px;
     background: none;
     border: none;
     padding: 10px;
@@ -48,4 +50,59 @@
         width: 25em;
     }
     
+    .card_title{
+        font-size: 2em;
+        text-align: center;
+    }
+
+    .card_text{
+        font-size: 30px;
+    }
+
+    .card_button{
+        font-size: 20px;
+        background: none;
+        border: none;
+        padding: 10px;
+        background-color: #D4A437;
+        margin-top: 1em;
+        border-radius: 20px;
+    }
+    
+}
+    @media (min-width: 1024px) {
+    .card{
+        height: fit-content;
+        width: 90%;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card_title{
+        padding-right: 40px;
+        font-size: 2em;
+        text-align: center;
+    }
+
+    .card_img {
+        padding-left: 30px;
+        width: 20em;
+    }
+
+    .card_text{
+        font-size: 30px;
+    }
+
+    .card_button{
+        font-size: 20px;
+        background: none;
+        border: none;
+        padding: 10px;
+        background-color: #D4A437;
+        margin-top: 1em;
+        border-radius: 20px;
+    }
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ProductCard from "../Componentes/ProductCard.jsx";
 import ProductDetail from "../Componentes/ProductDetail.jsx";
+import "../styles/VistaProducto.css"
 
 function VistaProductos({ productos, agregarAlCarrito}) {
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);

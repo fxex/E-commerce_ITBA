@@ -10,9 +10,9 @@ function BarraNavegacion({cambiarPagina, carrito}){
             <nav className="navegacion_container">
                 <img src={logo} alt="Logo Hermanos Jota" className="imagen_logo"/>
                 <ul className="navegacion_links">
-                    <li><button onClick={() => cambiarPagina("inicio")}>Inicio</button></li>
-                    <li><button onClick={() => cambiarPagina("productos")}>Productos</button></li>
-                    <li><button onClick={() => cambiarPagina("Contacto")}>Contacto</button></li>
+                    <li><button className="Botones_navegacion" onClick={() => cambiarPagina("inicio")}>Inicio</button></li>
+                    <li><button className="Botones_navegacion" onClick={() => cambiarPagina("productos")}>Productos</button></li>
+                    <li><button className="Botones_navegacion" onClick={() => cambiarPagina("Contacto")}>Contacto</button></li>
                     <li><a id="carrito">
                         <img src={logoCarrito} alt="carrito de compra" className="nav_carrito"/> {carrito}
                     </a></li>

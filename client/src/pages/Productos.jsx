@@ -7,7 +7,9 @@ function Productos({setCarrito}) {
   return (
     <section className='contenedor_productos'>
         <h2 className='title'>Productos</h2>
-        <VistaProductos productos={productosSimulados} agregarAlCarrito={setCarrito}/>
+        <div>
+          <VistaProductos productos={productosSimulados} agregarAlCarrito={setCarrito}/>
+        </div>
     </section>
   )
 }
