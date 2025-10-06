@@ -36,14 +36,12 @@ body {
 }
 
 .productos_container {
-  display: flex;
   justify-content: center;
   align-items: center;
   padding: 2rem;
   max-width: 2200px;
   margin: 0 auto;
   background-color: #F5E6D3;
-
 }
 
 .titulo_productos {
