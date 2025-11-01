@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const log = require("./middleware/global")
 const errorHandler = require("./middleware/errorHandler")
 const handler404 = require("./middleware/handler404")
@@ -9,6 +10,7 @@ const app = express()
 const port = 3000
 
 // Middlewares
+app.use(cors())
 app.use(log)
 app.use(express.json())
 
