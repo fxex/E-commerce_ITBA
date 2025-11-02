@@ -27,6 +27,7 @@ function BarraNavegacion({ carrito }) {
       </nav>
     </header>
   );
-}
+}     
+//algo
 
 export default BarraNavegacion;
