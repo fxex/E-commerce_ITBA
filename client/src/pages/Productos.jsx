@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import "../styles/productos.css"
+import "../styles/Productos.css"
 import VistaProductos from '../Componentes/VistaProductos'
 
 function Productos({setCarrito}) {
