@@ -7,9 +7,7 @@ function BarraNavegacion({ carrito }) {
   return (
     <header>
       <nav className="navegacion_container">
-        <Link to="/">
           <img src={logo} alt="Logo Hermanos Jota" className="imagen_logo" />
-        </Link>
         <ul className="navegacion_links">
           <li>
             <Link to="/" className="Botones_navegacion">Inicio</Link>
