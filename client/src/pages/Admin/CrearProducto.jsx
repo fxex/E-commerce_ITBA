@@ -87,7 +87,7 @@ function CrearProducto() {
         <input
           type="text"
           name="imagenURL"
-          placeholder="URL de imagen (ej: /Imagenes/mesa.png)"
+          placeholder="URL de imagen de google"
           value={formData.imagenURL}
           onChange={handleChange}
           required

@@ -9,7 +9,7 @@ function VistaProductos({ productos }) {
         <div key={prod._id} className="producto_card">
           <ProductCard
             id= {prod._id}
-            img={`https://e-commerce-itba.onrender.com${prod.imagenURL}`}
+            img={`${prod.imagenURL}`}
             nombre={prod.nombre}
             precio={prod.precio}
           />
