@@ -1,8 +1,8 @@
 .contenedor_productos{
     width: 100vw;
+    height: fit-content;
     position: relative;
     background-color: #ffffff;
-    height: 100vh;
 }
 
 .title{
