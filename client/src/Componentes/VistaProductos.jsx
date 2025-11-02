@@ -1,33 +1,21 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import ProductCard from "../Componentes/ProductCard.jsx";
-import ProductDetail from "../Componentes/ProductDetail.jsx";
-import "../styles/VistaProducto.css"
+import "../styles/VistaProducto.css";
 
-function VistaProductos({ productos, agregarAlCarrito}) {
-  const [productoSeleccionado, setProductoSeleccionado] = useState(null);
-
+function VistaProductos({ productos }) {
   return (
-    <>
-      {productoSeleccionado ? (
-        <ProductDetail
-          producto={productoSeleccionado}
-          agregarAlCarrito={agregarAlCarrito}
-          verMenos={() => setProductoSeleccionado(null)}
-        />
-      ) : (
-        <div className="vista_productos">
-          {productos.map((prod) => (
-            <ProductCard
-              key={prod.id}
-              img={prod.imagen}
-              nombre={prod.nombre}
-              precio={prod.precio}
-              verTodoElDetalle={() => setProductoSeleccionado(prod)}
-            />
-          ))}
+    <div className="vista_productos">
+      {productos.map((prod) => (
+        <div key={prod._id} className="producto_card">
+          <ProductCard
+            id= {prod._id}
+            img={`https://e-commerce-itba.onrender.com${prod.imagenURL}`}
+            nombre={prod.nombre}
+            precio={prod.precio}
+          />
         </div>
-      )}
-    </>
+      ))}
+    </div>
   );
 }
 

@@ -1,28 +1,34 @@
 import { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 
-//Todos los componentes
+//Paginas
 import Inicio from './pages/Inicio'
-import Footer from './Componentes/Footer'
 import Contacto from './pages/Form'
-import BarraNavegacion from './Componentes/Navbar'
 import Productos from './pages/Productos'
+import CrearProducto from './pages/Admin/CrearProducto'
+
+//Componentes
+import Footer from './Componentes/Footer'
+import BarraNavegacion from './Componentes/Navbar'
+import ProductDetail from './Componentes/ProductDetail'
+
 
 function App() {
-  const [paginaActual, setPaginaActual] = useState("inicio")
   const [carrito, setCarrito] = useState([])
-
-  
 
   return (
     <>
-    <BarraNavegacion cambiarPagina={setPaginaActual} carrito={carrito.length} />
-    
-    {paginaActual === "inicio" && <Inicio />}
-    {paginaActual === "productos" && <Productos setCarrito={setCarrito} />}
-    {paginaActual === "Contacto" && <Contacto />}
-    <Footer/>
+      <BarraNavegacion carrito={carrito.length} />
+      <Routes>
+        <Route path="/" element={<Inicio/>} />
+        <Route path="/productos" element={<Productos />} />
+        <Route path="/productos/:id" element={<ProductDetail setCarrito={setCarrito}/>} />
+        <Route path="/contacto" element={<Contacto />} />
+        <Route path="/admin/crear-producto" element={<CrearProducto />} />
+      </Routes>
+      <Footer />
     </>
-  )
+  );
 }
 
 export default App

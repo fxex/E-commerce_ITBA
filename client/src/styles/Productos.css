@@ -2,7 +2,7 @@
     width: 100vw;
     position: relative;
     background-color: #ffffff;
-    height: 100%;
+    height: 100vh;
 }
 
 .title{
@@ -14,6 +14,6 @@
 @media(min-width: 1440px){
     .contenedor_productos{
     width: 100vw;
-    height: 100%;
+    height: 100vh;
     justify-items: center;
 }}
