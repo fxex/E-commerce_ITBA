@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import logoCarrito from "../assets/logo_carrito.png";
 import "../styles/navbar.css";
+import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
 
 function BarraNavegacion({ carrito }) {
+  const {currentUser, logout} = useContext(AuthContext)
   return (
     <header>
       <nav className="navegacion_container">

@@ -49,7 +49,7 @@ function ProductDetail({ setCarrito }) {
   return (
     <div className="ProductDetail_Container">
       <img
-        src={`https://e-commerce-itba.onrender.com/api${encodeURI(imagenURL)}`}
+        src={imagenURL}
         alt={nombre}
         className="ProductDetail_img"
       />
