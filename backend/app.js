@@ -4,6 +4,7 @@ const log = require("./middleware/global")
 const errorHandler = require("./middleware/errorHandler")
 const handler404 = require("./middleware/handler404")
 const productsRoute = require("./routes/productsRoute")
+const usuarioRoute = require("./routes/usuarioRoute")
 require("./db/db")
 
 const app = express()
@@ -16,6 +17,7 @@ app.use(express.json())
 
 
 app.use("/api/productos", productsRoute)
+app.use("/api/usuarios", usuarioRoute)
 // Uso del manejador del recurso no encontrado
 app.use(handler404)
 
