@@ -63,7 +63,10 @@ function ProductDetail() {
       <p className="ProductDetail_text">Tamaño: {tamaño}</p>
       <button
         className="ProductDetail_boton"
-        onClick={() => agregar_producto(producto)}
+        onClick={() => {
+          agregar_producto(producto)
+          
+        }}
       >
         Añadir al carrito
       </button>

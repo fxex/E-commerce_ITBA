@@ -1,28 +1,31 @@
 import { Link } from "react-router-dom";
 import ProductCard from "../Componentes/ProductCard.jsx";
 import "../styles/VistaProducto.css";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext.jsx";
 
-function Carrito({ productos, eliminarDelCarrito }) {
-
+function Carrito() {
+  const {carrito, eliminar_producto} = useContext(CartContext)
 
 
 
   return (
 
     <div className="vista_productos">
-      {productos.length === 0 ? (
+      {carrito.length === 0 ? (
         <p>Tu carrito está vacío 🛒</p>
       ) : (
-        productos.map((item) => (
+        carrito.map((item) => (
           <div key={item._id} className="producto_card">
             <ProductCard
               id={item._id}
               img={`${item.imagenURL}`}
               nombre={item.nombre}
               precio={item.precio}
-              onRemove={() => eliminarDelCarrito(item._id)}
+              quantity={item.quantity}
+              carrito={true}
+              onRemove={() => eliminar_producto(item)}
             />
-
           </div>
       ))
     )}

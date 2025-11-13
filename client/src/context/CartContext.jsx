@@ -25,7 +25,7 @@ export const CartProvider = ({children}) =>{
     }
 
     const eliminar_producto = (producto) =>{
-        setCarrito(prevItems => prevItems.filter(item => item._id !== producto.id));
+        setCarrito(prevItems => prevItems.filter(item => item._id !== producto._id));
     }
 
     const vaciar_carrito = () =>{
