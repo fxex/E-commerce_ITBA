@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "../styles/ProductoDetail.css";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
-function ProductDetail({ setCarrito }) {
+function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [producto, setProducto] = useState(null);
+  const {agregar_producto} = useContext(CartContext)
 
   useEffect(() => {
     fetch(`https://e-commerce-itba.onrender.com/api/productos/${id}`)
@@ -60,7 +63,7 @@ function ProductDetail({ setCarrito }) {
       <p className="ProductDetail_text">Tamaño: {tamaño}</p>
       <button
         className="ProductDetail_boton"
-        onClick={() => setCarrito((prev) => [...prev, producto])}
+        onClick={() => agregar_producto(producto)}
       >
         Añadir al carrito
       </button>

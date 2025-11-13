@@ -14,15 +14,14 @@ import ProductDetail from './Componentes/ProductDetail'
 
 
 function App() {
-  const [carrito, setCarrito] = useState([])
 
   return (
     <>
-      <BarraNavegacion carrito={carrito.length} />
+      <BarraNavegacion />
       <Routes>
         <Route path="/" element={<Inicio/>} />
         <Route path="/productos" element={<Productos />} />
-        <Route path="/productos/:id" element={<ProductDetail setCarrito={setCarrito}/>} />
+        <Route path="/productos/:id" element={<ProductDetail />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/admin/crear-producto" element={<CrearProducto />} />
       </Routes>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import "../styles/Productos.css"
 import VistaProductos from '../Componentes/VistaProductos'
 
-function Productos({setCarrito}) {
+function Productos() {
 
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -33,7 +33,7 @@ function Productos({setCarrito}) {
         <div>
           {loading && <p>Cargando productos...</p>}
           {error && <p>{error}</p>}
-          {!loading && !error && <VistaProductos productos={productos} agregarAlCarrito={setCarrito}/>}
+          {!loading && !error && <VistaProductos productos={productos}/>}
         </div>
     </section>
   )

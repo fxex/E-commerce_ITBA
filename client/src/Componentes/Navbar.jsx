@@ -4,9 +4,11 @@ import logoCarrito from "../assets/logo_carrito.png";
 import "../styles/navbar.css";
 import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
-function BarraNavegacion({ carrito }) {
+function BarraNavegacion() {
   const {currentUser, logout} = useContext(AuthContext)
+  const {total} = useContext(CartContext)
   return (
     <header>
       <nav className="navegacion_container">
@@ -23,7 +25,7 @@ function BarraNavegacion({ carrito }) {
           </li>
           <li>
             <Link to="/carrito" id="carrito">
-              <img src={logoCarrito} alt="carrito de compra" className="nav_carrito" /> {carrito}
+              <img src={logoCarrito} alt="carrito de compra" className="nav_carrito" /> {total}
             </Link>
           </li>
         </ul>
