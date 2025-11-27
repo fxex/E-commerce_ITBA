@@ -6,11 +6,13 @@ import Contacto from './pages/Form'
 import Productos from './pages/Productos'
 import CrearProducto from './pages/Admin/CrearProducto'
 import Carrito from "./pages/Carrito"
+import NotFound from './notFound/notFound'
 
 //Componentes
 import Footer from './Componentes/Footer'
 import BarraNavegacion from './Componentes/Navbar'
 import ProductDetail from './Componentes/ProductDetail'
+
 
 function App() {
 
@@ -24,6 +26,7 @@ function App() {
         <Route path="/contacto" element={<Contacto />} />
         <Route path='/carrito' element={<Carrito /> } />
         <Route path="/admin/crear-producto" element={<CrearProducto />} />
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
       <Footer />
     </>
