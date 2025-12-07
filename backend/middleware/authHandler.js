@@ -1,17 +1,17 @@
-const jwt = require('jsonwebtoken');
- 
+const jwt = require("jsonwebtoken");
+
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
- 
-  if (authHeader && authHeader.startsWith('Bearer ')) {
-    const token = authHeader.split(' ')[1]; // Extraemos el token
- 
+
+  if (authHeader && authHeader.startsWith("Bearer ")) {
+    const token = authHeader.split(" ")[1]; // Extraemos el token
+
     jwt.verify(token, process.env.JWT_SECRET, (err, decodedPayload) => {
       if (err) {
         // Si el token no es válido (expirado, manipulado)
-        return res.status(403).json({ message: 'Token inválido o expirado' }); // 403 Forbidden
+        return res.status(403).json({ message: "Token inválido o expirado" }); // 403 Forbidden
       }
- 
+
       // 3. Si es válido, guardamos el payload (info del user) en el objeto 'req'
       // para que las rutas posteriores puedan usarlo.
       req.user = decodedPayload;
@@ -19,8 +19,8 @@ const verifyToken = (req, res, next) => {
     });
   } else {
     // Si no hay token, no hay acceso
-    res.status(401).json({ message: 'No estás autenticado' }); // 401 Unauthorized
+    res.status(401).json({ message: "No estás autenticado" }); // 401 Unauthorized
   }
 };
- 
+
 module.exports = verifyToken;

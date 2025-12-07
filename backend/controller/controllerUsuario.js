@@ -1,5 +1,5 @@
 const Usuario = require("../model/Usuario");
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
 
 class ControladorUsuario {
   constructor() {
@@ -16,7 +16,21 @@ class ControladorUsuario {
 
   async obtenerUsuarioId(id_usuario) {
     try {
-      const usuario = await this._usuario.findById(id_usuario);
+      const usuario = await this._usuario.findById(id_usuario).lean();
+      if (!usuario) {
+        const error = new Error("Usuario no encontrado");
+        error.status = 404;
+        throw error;
+      }
+      return usuario;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async obtenerUsuarioEmail(email) {
+    try {
+      const usuario = await this._usuario.findOne({ email: email }).lean();
       if (!usuario) {
         const error = new Error("Usuario no encontrado");
         error.status = 404;
@@ -34,7 +48,8 @@ class ControladorUsuario {
         !body.username ||
         body.username.trim() === "" ||
         !body.email ||
-        !body.password 
+        !body.password ||
+        !body.perfil
       ) {
         const error = new Error(
           "Los campos requeridos no estan bien completados"
@@ -42,20 +57,22 @@ class ControladorUsuario {
         error.status = 400;
         throw error;
       }
-      const usuario = await this._usuario.findOne({email: body.email});
+      const usuario = await this._usuario.findOne({ email: body.email });
       if (usuario) {
-        const error = new Error(
-          "El usuario ya esta registrado"
-        );
+        const error = new Error("El usuario ya esta registrado");
         error.status = 400;
         throw error;
       }
 
-      const salt = await bcrypt.genSalt(10)
-      const hashedPassword = await bcrypt.hash(body.password, salt)
-      
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(body.password, salt);
 
-      const nuevoUsuario = new Usuario({username: body.username, email: body.email, password: hashedPassword});
+      const nuevoUsuario = new Usuario({
+        username: body.username,
+        email: body.email,
+        password: hashedPassword,
+        perfil: body.perfil,
+      });
       return await nuevoUsuario.save();
     } catch (error) {
       throw error;
@@ -68,7 +85,7 @@ class ControladorUsuario {
         !body.username ||
         body.username.trim() === "" ||
         !body.email ||
-        !body.password 
+        !body.password
       ) {
         const error = new Error(
           "Los campos requeridos no estan bien completados"
@@ -110,3 +127,5 @@ class ControladorUsuario {
     }
   }
 }
+
+module.exports = ControladorUsuario;

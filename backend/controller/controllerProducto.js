@@ -20,9 +20,25 @@ class ControladorProducto {
       if (!producto) {
         const error = new Error("Producto no encontrado");
         error.status = 404;
-        throw error
+        throw error;
       }
       return producto;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async obtenerProductosIds(ids_producto) {
+    try {
+      const productos = await this._productos.find({
+        _id: { $in: ids_producto },
+      });
+      if (!productos) {
+        const error = new Error("Productos no encontrado");
+        error.status = 404;
+        throw error;
+      }
+      return productos;
     } catch (error) {
       throw error;
     }
@@ -49,7 +65,7 @@ class ControladorProducto {
     }
   }
 
-  async actualizarProducto(id_producto, body){
+  async actualizarProducto(id_producto, body) {
     try {
       if (
         !body.nombre ||
@@ -68,13 +84,13 @@ class ControladorProducto {
         body,
         {
           new: true,
-          runValidators: true
+          runValidators: true,
         }
       );
       if (!productoActualizado) {
         const error = new Error("Producto no encontrado");
         error.status = 404;
-        throw error
+        throw error;
       }
       return productoActualizado;
     } catch (error) {
@@ -83,11 +99,13 @@ class ControladorProducto {
   }
   async eliminarProducto(id_producto) {
     try {
-      const productoEliminado = await this._productos.findByIdAndDelete(id_producto);
+      const productoEliminado = await this._productos.findByIdAndDelete(
+        id_producto
+      );
       if (!productoEliminado) {
         const error = new Error("Producto no encontrado");
         error.status = 404;
-        throw error
+        throw error;
       }
       return productoEliminado;
     } catch (error) {
