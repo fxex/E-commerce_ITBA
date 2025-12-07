@@ -7,32 +7,56 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 
 function BarraNavegacion() {
-  const {currentUser, logout} = useContext(AuthContext)
-  const {total} = useContext(CartContext)
+  const { currentUser, logout } = useContext(AuthContext);
+  const { total } = useContext(CartContext);
   return (
     <header>
       <nav className="navegacion_container">
-          <img src={logo} alt="Logo Hermanos Jota" className="imagen_logo" />
+        <img src={logo} alt="Logo Hermanos Jota" className="imagen_logo" />
         <ul className="navegacion_links">
           <li>
-            <Link to="/" className="Botones_navegacion">Inicio</Link>
-          </li>
-          <li>
-            <Link to="/productos" className="Botones_navegacion">Productos</Link>
-          </li>
-          <li>
-            <Link to="/contacto" className="Botones_navegacion">Contacto</Link>
-          </li>
-          <li>
-            <Link to="/carrito" id="carrito">
-              <img src={logoCarrito} alt="carrito de compra" className="nav_carrito" /> {total}
+            <Link to="/" className="Botones_navegacion">
+              Inicio
             </Link>
+          </li>
+          <li>
+            <Link to="/productos" className="Botones_navegacion">
+              Productos
+            </Link>
+          </li>
+          <li>
+            <Link to="/contacto" className="Botones_navegacion">
+              Contacto
+            </Link>
+          </li>
+          {currentUser ? (
+            <li>
+              <Link to="/carrito" id="carrito">
+                <img
+                  src={logoCarrito}
+                  alt="carrito de compra"
+                  className="nav_carrito"
+                />{" "}
+                {total}
+              </Link>
+            </li>
+          ) : null}
+          <li>
+            {currentUser ? (
+              <button onClick={logout} className="Botones_navegacion">
+                Cerrar Sesión
+              </button>
+            ) : (
+              <Link to="/login" className="Botones_navegacion">
+                Iniciar Sesión
+              </Link>
+            )}
           </li>
         </ul>
       </nav>
     </header>
   );
-}     
+}
 //algo
 
 export default BarraNavegacion;

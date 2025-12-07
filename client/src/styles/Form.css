@@ -78,3 +78,8 @@ main {
 .boton_formulario:hover {
     background-color: #b88c2f;
 }
+
+.botones_formulario {
+    display: flex;
+    gap: 10px;
+}

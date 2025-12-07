@@ -5,8 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext);
-  const [formData, setFormData] = useState({ correo: "", contrasenia: "" });
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    username: "",
+  });
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
@@ -18,12 +21,16 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const success = await login(formData);
+    const response = await fetch(`${URL}/usuarios/registro`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+    const data = await response.json();
 
-    if (!success) {
-      setError("Credenciales inválidas. Intenta de nuevo.");
-    }
-    navigate("/");
+    navigate("/login");
   };
 
   return (
@@ -31,6 +38,17 @@ const LoginPage = () => {
       <section className="contenido_principal">
         <h2 className="titulo_contacto">Iniciar sesión</h2>
         <form onSubmit={handleSubmit} className="container_formulario">
+          <div className="campo_formulario">
+            <label htmlFor="username">Nombre de usuario</label>
+            <input
+              type="text"
+              name="username"
+              placeholder="Nombre de usuario"
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
+          </div>
           <div className="campo_formulario">
             <label htmlFor="nombre">Correo electrónico</label>
             <input
@@ -55,14 +73,14 @@ const LoginPage = () => {
           </div>
           <div className="botones_formulario">
             <button type="submit" className="boton_formulario">
-              Entrar
+              Registrarse
             </button>
             <button
               type="button"
               className="boton_formulario"
-              onClick={() => navigate("/registro")}
+              onClick={() => navigate("/login")}
             >
-              Registrarse
+              Cancelar
             </button>
           </div>
         </form>

@@ -18,17 +18,17 @@ router.get("/", verifyToken, async (req, res, next) => {
 
 router.post("/login", async (req, res, next) => {
   try {
-    const { correo, contrasenia } = req.body;
-    const usuario = await controladorUsuario.obtenerUsuarioEmail(correo);
-    const passwordMatch = await bcrypt.compare(contrasenia, usuario.password);
+    const { email, password } = req.body;
+    const usuario = await controladorUsuario.obtenerUsuarioEmail(email);
+    const passwordMatch = await bcrypt.compare(password, usuario.password);
     if (!passwordMatch) {
       const error = new Error("Usuario o contraseña incorrectos");
       error.status = 401;
       throw error;
     }
-    const { password, ...usuarioSinContrasenia } = usuario;
+    delete usuario.password;
 
-    const token = jwt.sign(usuarioSinContrasenia, process.env.JWT_SECRET);
+    const token = jwt.sign(usuario, process.env.JWT_SECRET);
 
     res.json({ logueado: token });
   } catch (error) {
@@ -40,6 +40,7 @@ router.post("/login", async (req, res, next) => {
 router.post("/registro", async (req, res, next) => {
   try {
     const datosNuevoUsuario = req.body;
+    datosNuevoUsuario.perfil = "usuario estandar";
     const { password, ...usuarioCreado } =
       await controladorUsuario.crearUsuario(datosNuevoUsuario);
 
