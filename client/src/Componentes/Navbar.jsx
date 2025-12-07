@@ -31,6 +31,26 @@ function BarraNavegacion() {
           </li>
           {currentUser ? (
             <li>
+              <Link to="/perfil" id="perfil" className="Botones_navegacion">
+                Mi perfil
+              </Link>
+            </li>
+          ) : null}
+
+          <li>
+            {currentUser ? (
+              <Link to="/" onClick={logout} className="Botones_navegacion">
+                Cerrar Sesión
+              </Link>
+            ) : (
+              <Link to="/login" className="Botones_navegacion">
+                Iniciar Sesión
+              </Link>
+            )}
+          </li>
+
+          {currentUser ? (
+            <li>
               <Link to="/carrito" id="carrito">
                 <img
                   src={logoCarrito}
@@ -41,17 +61,6 @@ function BarraNavegacion() {
               </Link>
             </li>
           ) : null}
-          <li>
-            {currentUser ? (
-              <button onClick={logout} className="Botones_navegacion">
-                Cerrar Sesión
-              </button>
-            ) : (
-              <Link to="/login" className="Botones_navegacion">
-                Iniciar Sesión
-              </Link>
-            )}
-          </li>
         </ul>
       </nav>
     </header>

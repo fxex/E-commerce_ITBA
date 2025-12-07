@@ -2,8 +2,9 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { URL } from "../utils/url";
 
-const LoginPage = () => {
+const Registrarse = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -90,4 +91,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Registrarse;

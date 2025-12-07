@@ -73,7 +73,8 @@ class ControladorUsuario {
         password: hashedPassword,
         perfil: body.perfil,
       });
-      return await nuevoUsuario.save();
+      const usuarioCreado = await nuevoUsuario.save();
+      return usuarioCreado.toObject();
     } catch (error) {
       throw error;
     }

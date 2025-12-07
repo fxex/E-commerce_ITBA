@@ -41,16 +41,19 @@ router.post("/registro", async (req, res, next) => {
   try {
     const datosNuevoUsuario = req.body;
     datosNuevoUsuario.perfil = "usuario estandar";
-    const { password, ...usuarioCreado } =
-      await controladorUsuario.crearUsuario(datosNuevoUsuario);
+    const usuarioCreado = await controladorUsuario.crearUsuario(
+      datosNuevoUsuario
+    );
+
+    console.log(usuarioCreado);
 
     res.status(201).json({
       mensaje: "Usuario creado con éxito",
-      usuario: usuarioCreado, // Enviamos el documento completo con el _id generado por MongoDB
+      usuario: usuarioCreado,
     });
   } catch (error) {
     console.error("Error al crear usuario:", error.message);
-    error.status = 400; // Generalmente, un error de validación es un Bad Request (400)
+    error.status = 400;
     next(error);
   }
 });

@@ -7,14 +7,14 @@ export const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
 
-  // La lógica que antes estaba en App.js ahora vive aquí
   useEffect(() => {
     const token = localStorage.getItem("authToken");
-    console.log(token);
 
     if (token) {
-      // const decodedUser = jwtDecode(token);
-      // setCurrentUser(decodedUser);
+      const decodedUser = jwtDecode(token);
+      console.log(decodedUser);
+
+      setCurrentUser(decodedUser);
     }
   }, []);
 
