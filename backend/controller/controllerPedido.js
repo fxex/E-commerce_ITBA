@@ -47,7 +47,7 @@ class ControladorPedido {
         );
         return {
           productoId: p._id,
-          cantidad: producto.cantidad,
+          cantidad: p.quantity,
           precio: p.precio,
           nombre: p.nombre,
         };
