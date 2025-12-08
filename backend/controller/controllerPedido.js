@@ -28,7 +28,6 @@ class ControladorPedido {
         !body.productos ||
         body.productos.length === 0
       ) {
-        console.log(body);
         const error = new Error(
           "Los campos requeridos no estan bien completados"
         );
@@ -47,7 +46,7 @@ class ControladorPedido {
         );
         return {
           productoId: p._id,
-          cantidad: p.quantity,
+          cantidad: producto.quantity,
           precio: p.precio,
           nombre: p.nombre,
         };
