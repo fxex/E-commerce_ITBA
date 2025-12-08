@@ -90,6 +90,25 @@ router.put("/:id_usuario", verifyToken, async (req, res, next) => {
   }
 });
 
+router.put("/:id_usuario/contrasenia", verifyToken, async (req, res, next) => {
+  try {
+    const id_usuario = req.params.id_usuario;
+    const body = req.body;
+    const usuarioActualizado = await controladorUsuario.actualizarContrasenia(
+      id_usuario,
+      body
+    );
+    res.status(200).json({
+      mensaje: "Contrasenia actualizada con éxito",
+      usuario: usuarioActualizado,
+    });
+  } catch (error) {
+    console.error("Error al actualizar contrasenia:", error.message);
+    error.status = 400;
+    next(error);
+  }
+});
+
 router.delete("/:id_usuario", verifyToken, async (req, res, next) => {
   try {
     const id_usuario = req.params.id_usuario;

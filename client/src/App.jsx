@@ -20,6 +20,7 @@ import Perfil from "./pages/Perfil";
 import EditarProducto from "./pages/Admin/EditarProducto";
 import EditarUsuario from "./pages/Admin/EditarUsuario";
 import EditarPerfil from "./pages/EditarPerfil";
+import CambiarContrasenia from "./pages/cambiarContrasenia";
 
 function App() {
   return (
@@ -69,6 +70,14 @@ function App() {
           element={
             <RutaProtegida>
               <EditarPerfil />
+            </RutaProtegida>
+          }
+        />
+        <Route
+          path="/cambiar-contrasenia"
+          element={
+            <RutaProtegida>
+              <CambiarContrasenia />
             </RutaProtegida>
           }
         />

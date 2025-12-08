@@ -112,6 +112,60 @@ class ControladorUsuario {
       throw error;
     }
   }
+
+  async actualizarContrasenia(id_usuario, body) {
+    try {
+      if (
+        !body.currentPassword ||
+        body.currentPassword.trim() === "" ||
+        !body.newPassword ||
+        body.newPassword.trim() === "" ||
+        !body.repeatNewPassword ||
+        body.repeatNewPassword.trim() === ""
+      ) {
+        const error = new Error(
+          "Los campos requeridos no estan bien completados"
+        );
+        error.status = 400;
+        throw error;
+      }
+      if (body.newPassword !== body.repeatNewPassword) {
+        const error = new Error("Las contraseñas no coinciden");
+        error.status = 400;
+        throw error;
+      }
+      const usuario = await this.obtenerUsuarioId(id_usuario);
+      const passwordMatch = await bcrypt.compare(
+        body.currentPassword,
+        usuario.password
+      );
+      if (!passwordMatch) {
+        const error = new Error("Contraseña actual incorrecta");
+        error.status = 400;
+        throw error;
+      }
+
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(body.newPassword, salt);
+
+      const usuarioActualizado = await this._usuario.findByIdAndUpdate(
+        id_usuario,
+        { password: hashedPassword },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+      if (!usuarioActualizado) {
+        const error = new Error("Usuario no encontrado");
+        error.status = 404;
+        throw error;
+      }
+      return usuarioActualizado;
+    } catch (error) {
+      throw error;
+    }
+  }
   async eliminarUsuario(id_usuario) {
     try {
       const usuarioEliminado = await this._usuario.findByIdAndDelete(
