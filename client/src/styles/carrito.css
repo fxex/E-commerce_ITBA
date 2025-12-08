@@ -1,0 +1,113 @@
+/* Contenedor Principal */
+.vista_productos {
+    background-color: white; /* Fondo blanco solicitado */
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+    font-family: 'Georgia', serif;
+}
+
+/* El Box de cada producto */
+.producto_card_box {
+    background-color: white;
+    border: 2px solid #a0522d; /* Borde marrón resaltado */
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 2px 2px 10px rgba(160, 82, 45, 0.1);
+}
+
+/* El Box del Total y Finalizar Compra */
+.checkout_section {
+    background-color: white;
+    border: 3px solid #a0522d; /* Borde más grueso para resaltar el checkout */
+    border-radius: 15px;
+    padding: 30px;
+    width: 100%;
+    max-width: 450px;
+    margin-top: 30px;
+    text-align: center;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Ajustes adicionales de texto para legibilidad */
+.detalles_box h4 {
+    color: #a0522d;
+    margin: 0 0 5px 0;
+    font-size: 1.3rem;
+}
+
+.precio_box {
+    color: #5d4037;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+.producto_info_box {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.img_carrito_box {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.btn_eliminar_box {
+    background-color: #a0522d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Georgia', serif;
+    transition: opacity 0.2s;
+}
+
+.btn_eliminar_box:hover {
+    opacity: 0.8;
+}
+
+.btn_finalizar {
+    width: 100%;
+    padding: 15px;
+    background-color: #a0522d;
+    color: white;
+    font-size: 1.2rem;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn_finalizar:hover:not(:disabled) {
+    background-color: #5d4037;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn_finalizar:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn_finalizar:disabled {
+    background-color: #bcaaa4;
+    cursor: not-allowed;
+    opacity: 0.7;
+}

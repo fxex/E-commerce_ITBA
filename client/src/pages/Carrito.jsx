@@ -1,16 +1,16 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext.jsx";
 import { CartContext } from "../context/CartContext.jsx"; 
-import ProductCard from "../Componentes/ProductCard.jsx";
 import { URL } from "../utils/url";
+import "../styles/carrito.css";
 
 function Carrito() {
-  // Usamos los nombres exactos de tu CartContext: vaciar_carrito y eliminar_producto
+  // Consolidamos el uso de CartContext para la gestión global 
   const { carrito, vaciar_carrito, eliminar_producto } = useContext(CartContext);
   const { currentUser } = useContext(AuthContext);
 
   const handleFinalizarCompra = async () => {
-    // Verificación de usuario logueado [cite: 66]
+    // 1. Verificación de seguridad: solo usuarios logueados pueden comprar [cite: 66]
     if (!currentUser) {
       alert("Debes iniciar sesión para comprar.");
       return;
@@ -18,18 +18,19 @@ function Carrito() {
 
     const token = localStorage.getItem("authToken");
 
-    // Mapeamos los datos para que coincidan con lo que espera tu controllerPedido.js
+    // 2. Mapeo de datos para el backend (formato requerido por el controlador)
     const productosParaBackend = carrito.map(item => ({
       productoId: item._id, 
-      cantidad: item.quantity // Usamos 'quantity' que es el nombre en tu CartContext
+      cantidad: item.quantity 
     }));
 
     try {
+      // 3. Petición protegida con JWT [cite: 67, 95]
       const response = await fetch(`${URL}/pedidos`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}` // Requisito: Enviar JWT 
+          "Authorization": `Bearer ${token}` 
         },
         body: JSON.stringify({
           productos: productosParaBackend
@@ -38,7 +39,8 @@ function Carrito() {
 
       if (response.ok) {
         alert("¡Pedido realizado con éxito!");
-        vaciar_carrito(); // Requisito: Limpiar carrito tras pedido exitoso [cite: 76]
+        // 4. Requisito funcional: Vaciar carrito tras éxito 
+        vaciar_carrito(); 
       } else {
         const errorData = await response.json();
         alert(errorData.mensaje || "Error al procesar el pedido.");
@@ -55,24 +57,35 @@ function Carrito() {
   return (
     <div className="vista_productos">
       {carrito.length === 0 ? (
-        <p>Tu carrito está vacío 🛒</p>
+        <p className="carrito_vacio_msg">Tu carrito está vacío 🛒</p>
       ) : (
         <>
           <div className="carrito_lista">
             {carrito.map((item) => (
-              <div key={item._id} className="producto_card">
-                <ProductCard
-                  id={item._id}
-                  nombre={item.nombre}
-                  precio={item.precio}
-                  img={item.imagenURL}
-                  onRemove={() => eliminar_producto(item)}
-                  carrito={true}
-                />
-                <p>Cantidad: {item.quantity}</p>
+              /* Diseño de box limpio solicitado */
+              <div key={item._id} className="producto_card_box">
+                <div className="producto_info_box">
+                    <img 
+                      src={item.imagenURL} 
+                      alt={item.nombre} 
+                      className="img_carrito_box" 
+                    />
+                    <div className="detalles_box">
+                        <h4>{item.nombre}</h4>
+                        <p className="precio_box">${item.precio}</p>
+                        <p>Cantidad: {item.quantity}</p>
+                    </div>
+                </div>
+                <button 
+                    onClick={() => eliminar_producto(item)} 
+                    className="btn_eliminar_box"
+                >
+                    Eliminar
+                </button>
               </div>
             ))}
           </div>
+
           <div className="checkout_section">
             <h3>Total: ${calcularTotalPrecio()}</h3>
             <button 
