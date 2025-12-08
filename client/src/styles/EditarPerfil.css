@@ -1,0 +1,40 @@
+/* Estilo general para inputs de EditarPerfil */
+.lista_perfil input[type="text"],
+.lista_perfil input[type="email"],
+.lista_perfil input[type="password"] {
+    width: 100%;
+    max-width: 400px;
+
+    padding: 12px 14px;
+
+    font-size: 1em;
+    color: #333;
+
+    background-color: #fafafa;
+
+    border: 1px solid #cfcfcf;
+    border-radius: 8px;
+
+    transition: 0.2s ease;
+}
+
+/* Estado de foco */
+.lista_perfil input:focus {
+    outline: none;
+    border-color: #D4A437;
+    background: white;
+    box-shadow: 0 0 4px rgba(212, 164, 55, 0.35);
+}
+
+/* Alineación correcta dentro del li */
+.perfil_item input {
+    margin-left: 15px;
+    flex: 1;
+}
+
+/* Asegura que nombre y email no se monten con el label */
+.perfil_item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}

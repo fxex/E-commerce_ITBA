@@ -19,6 +19,7 @@ import ListaUsuarios from "./pages/Admin/ListaUsuarios";
 import Perfil from "./pages/Perfil";
 import EditarProducto from "./pages/Admin/EditarProducto";
 import EditarUsuario from "./pages/Admin/EditarUsuario";
+import EditarPerfil from "./pages/EditarPerfil";
 
 function App() {
   return (
@@ -60,6 +61,14 @@ function App() {
           element={
             <RutaProtegida>
               <Perfil />
+            </RutaProtegida>
+          }
+        />
+        <Route
+          path="/editar-perfil"
+          element={
+            <RutaProtegida>
+              <EditarPerfil />
             </RutaProtegida>
           }
         />
