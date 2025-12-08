@@ -16,6 +16,9 @@ import LoginPage from "./pages/Login";
 import RutaProtegida from "./Componentes/RutaProtegida";
 import Registrarse from "./pages/Registrarse";
 import ListaUsuarios from "./pages/Admin/ListaUsuarios";
+import Perfil from "./pages/Perfil";
+import EditarProducto from "./pages/Admin/EditarProducto";
+import EditarUsuario from "./pages/Admin/EditarUsuario";
 
 function App() {
   return (
@@ -27,6 +30,14 @@ function App() {
         <Route path="/registro" element={<Registrarse />} />
         <Route path="/productos" element={<Productos />} />
         <Route path="/productos/:id" element={<ProductDetail />} />
+        <Route
+          path="/productos/:id_producto/editar-producto"
+          element={
+            <RutaProtegida>
+              <EditarProducto />
+            </RutaProtegida>
+          }
+        />
         <Route path="/contacto" element={<Contacto />} />
         <Route
           path="/carrito"
@@ -44,12 +55,27 @@ function App() {
             </RutaProtegida>
           }
         />
-        } />
+        <Route
+          path="/perfil"
+          element={
+            <RutaProtegida>
+              <Perfil />
+            </RutaProtegida>
+          }
+        />
         <Route
           path="/admin/lista-usuarios"
           element={
             <RutaProtegida>
               <ListaUsuarios />
+            </RutaProtegida>
+          }
+        />
+        <Route
+          path="/admin/editar-usuario/:id_usuario"
+          element={
+            <RutaProtegida>
+              <EditarUsuario />
             </RutaProtegida>
           }
         />

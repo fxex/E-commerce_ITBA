@@ -1,0 +1,89 @@
+.contenedor_editar_usuario {
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: black;
+}
+
+/* FORMULARIO */
+.form_editar_usuario {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    max-width: 500px;
+    background-color: #f8f8f8;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #dddddd;
+}
+
+/* Inputs */
+.form_editar_usuario label {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #222;
+}
+
+.radio_label {
+    flex-direction: row !important;
+    gap:  10px;
+}
+
+.form_editar_usuario input[type="text"],
+.form_editar_usuario input[type="email"] {
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+}
+
+/* RADIO */
+.contenedor_perfil_radio {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.contenedor_perfil_radio p {
+    margin-bottom: 10px;
+}
+/* Botón guardar */
+.boton_guardar {
+    font-size: 1.2em;
+    padding: 12px;
+    border: none;
+    background-color: #D4A437;
+    color: black;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.boton_guardar:hover {
+    background-color: #b98b2f;
+}
+
+/* Responsivo */
+@media (min-width: 1024px) {
+    .contenedor_editar_usuario {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+    }
+
+    .form_editar_usuario {
+        width: 40%;
+    }
+}

@@ -86,7 +86,7 @@ class ControladorUsuario {
         !body.username ||
         body.username.trim() === "" ||
         !body.email ||
-        !body.password
+        !body.perfil
       ) {
         const error = new Error(
           "Los campos requeridos no estan bien completados"

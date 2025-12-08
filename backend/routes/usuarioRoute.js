@@ -45,8 +45,6 @@ router.post("/registro", async (req, res, next) => {
       datosNuevoUsuario
     );
 
-    console.log(usuarioCreado);
-
     res.status(201).json({
       mensaje: "Usuario creado con éxito",
       usuario: usuarioCreado,

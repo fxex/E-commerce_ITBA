@@ -20,6 +20,12 @@ const ProductoSchema = new mongoose.Schema(
     imagenURL: {
       type: String,
     },
+    materiales: {
+      type: String,
+    },
+    tamaño: {
+      type: String,
+    },
   },
   {
     timestamps: true,

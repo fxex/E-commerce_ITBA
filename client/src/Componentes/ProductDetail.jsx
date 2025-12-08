@@ -81,7 +81,7 @@ function ProductDetail() {
       )}
       {currentUser && currentUser.perfil === "Administrador" && (
         <Link
-          to={`/productos/${id}/editar`}
+          to={`/productos/${id}/editar-producto`}
           className="ProductDetail_boton"
           style={{
             textDecoration: "none",

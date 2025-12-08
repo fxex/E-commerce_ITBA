@@ -36,13 +36,8 @@ export default function ListaUsuarios() {
   }, []);
   return (
     <section className="contenedor_usuarios">
-      <div className="contenedor_titulo">
+      <div className="contenedor_titulo_usuario">
         <h2 className="title">Usuarios</h2>
-        {currentUser && currentUser.perfil === "Administrador" && (
-          <Link to="/admin/crear-usuario" className="boton_titulo">
-            Crear
-          </Link>
-        )}
       </div>
 
       <div>
@@ -64,7 +59,7 @@ export default function ListaUsuarios() {
                 </p>
                 {currentUser && currentUser.perfil === "Administrador" && (
                   <Link
-                    to={`/admin/actualizar-usuario/${u._id}`}
+                    to={`/admin/editar-usuario/${u._id}`}
                     className="boton_lista"
                   >
                     Actualizar
