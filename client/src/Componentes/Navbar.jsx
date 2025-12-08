@@ -9,6 +9,79 @@ import { CartContext } from "../context/CartContext";
 function BarraNavegacion() {
   const { currentUser, logout } = useContext(AuthContext);
   const { total } = useContext(CartContext);
+  if (!currentUser) {
+    return (
+      <header>
+        <nav className="navegacion_container">
+          <img src={logo} alt="Logo Hermanos Jota" className="imagen_logo" />
+          <ul className="navegacion_links">
+            <li>
+              <Link to="/" className="Botones_navegacion">
+                Inicio
+              </Link>
+            </li>
+            <li>
+              <Link to="/productos" className="Botones_navegacion">
+                Productos
+              </Link>
+            </li>
+            <li>
+              <Link to="/contacto" className="Botones_navegacion">
+                Contacto
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/login" className="Botones_navegacion">
+                Iniciar Sesión
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    );
+  }
+
+  if (currentUser.perfil == "Administrador") {
+    return (
+      <header>
+        <nav className="navegacion_container">
+          <img src={logo} alt="Logo Hermanos Jota" className="imagen_logo" />
+          <ul className="navegacion_links">
+            <li>
+              <Link to="/" className="Botones_navegacion">
+                Inicio
+              </Link>
+            </li>
+            <li>
+              <Link to="/productos" className="Botones_navegacion">
+                Productos
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/admin/lista-usuarios" className="Botones_navegacion">
+                Usuarios
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/perfil" id="perfil" className="Botones_navegacion">
+                Mi perfil
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/" onClick={logout} className="Botones_navegacion">
+                Cerrar Sesión
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    );
+  }
+
   return (
     <header>
       <nav className="navegacion_container">

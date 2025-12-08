@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/CrearProducto.css";
+import { URL } from "../../utils/url";
 
 function CrearProducto() {
   const navigate = useNavigate();
@@ -26,10 +27,11 @@ function CrearProducto() {
     e.preventDefault();
 
     try {
-      const res = await fetch("https://e-commerce-itba.onrender.com/api/productos", {
+      const res = await fetch(`${URL}/productos`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
         body: JSON.stringify(formData),
       });

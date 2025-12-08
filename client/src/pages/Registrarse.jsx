@@ -22,14 +22,19 @@ const Registrarse = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`${URL}/usuarios/registro`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-    const data = await response.json();
+    try {
+      const response = await fetch(`${URL}/usuarios/registro`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+    } catch (error) {
+      console.log(error);
+      setError("Error al registrar el usuario");
+    }
 
     navigate("/login");
   };

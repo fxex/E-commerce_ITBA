@@ -15,6 +15,7 @@ import ProductDetail from "./Componentes/ProductDetail";
 import LoginPage from "./pages/Login";
 import RutaProtegida from "./Componentes/RutaProtegida";
 import Registrarse from "./pages/Registrarse";
+import ListaUsuarios from "./pages/Admin/ListaUsuarios";
 
 function App() {
   return (
@@ -29,9 +30,29 @@ function App() {
         <Route path="/contacto" element={<Contacto />} />
         <Route
           path="/carrito"
-          element={<RutaProtegida element={<Carrito />} />}
+          element={
+            <RutaProtegida>
+              <Carrito />
+            </RutaProtegida>
+          }
         />
-        <Route path="/admin/crear-producto" element={<CrearProducto />} />
+        <Route
+          path="/admin/crear-producto"
+          element={
+            <RutaProtegida>
+              <CrearProducto />
+            </RutaProtegida>
+          }
+        />
+        } />
+        <Route
+          path="/admin/lista-usuarios"
+          element={
+            <RutaProtegida>
+              <ListaUsuarios />
+            </RutaProtegida>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

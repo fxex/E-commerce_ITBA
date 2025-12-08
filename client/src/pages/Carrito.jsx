@@ -5,12 +5,9 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartContext.jsx";
 
 function Carrito() {
-  const {carrito, eliminar_producto} = useContext(CartContext)
-
-
+  const { carrito, eliminar_producto } = useContext(CartContext);
 
   return (
-
     <div className="vista_productos">
       {carrito.length === 0 ? (
         <p>Tu carrito está vacío 🛒</p>
@@ -27,8 +24,8 @@ function Carrito() {
               onRemove={() => eliminar_producto(item)}
             />
           </div>
-      ))
-    )}
+        ))
+      )}
     </div>
   );
 }

@@ -5,6 +5,21 @@
     background-color: #ffffff;
 }
 
+.contenedor_titulo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.boton_titulo {
+    font-size: 1.5em;
+    text-decoration: none;
+    color: black;
+    background-color: #D4A437;
+    padding: 10px;
+    border-radius: 5px;
+}
+
 .title{
     font-size: 3em;
     color: black;

@@ -1,3 +1,7 @@
+.producto_card{
+    width: 80%;
+}
+
 .card{
     background-color: #eee;
     border-radius: 1em;
@@ -11,9 +15,9 @@
 }
 
 .card_body{
-    text-align: left;
- 
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .card_title{
@@ -22,7 +26,10 @@
 }
 
 .card_img {
-    width: 9em;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
 }
 
 .card_text{
@@ -47,7 +54,7 @@
     }
 
     .card_img{
-        width: 25em;
+       width: 300px;
     }
     
     .card_title{
@@ -71,25 +78,26 @@
     
 }
     @media (min-width: 1024px) {
+    .producto_card{
+        width: fit-content;
+    }
     .card{
-        height: fit-content;
-        width: 90%;
+        /* height: fit-content; */
+        height: 80vh;
+        width: fit-content;
+        max-width: 95%;
         padding: 10px;
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
     }
 
     .card_title{
-        padding-right: 40px;
         font-size: 2em;
-        text-align: center;
     }
 
     .card_img {
-        padding-left: 30px;
-        width: 20em;
+        width: 350px;
+        height: 350px;
     }
 
     .card_text{
