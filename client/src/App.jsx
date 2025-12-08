@@ -20,7 +20,7 @@ import Perfil from "./pages/Perfil";
 import EditarProducto from "./pages/Admin/EditarProducto";
 import EditarUsuario from "./pages/Admin/EditarUsuario";
 import EditarPerfil from "./pages/EditarPerfil";
-import CambiarContrasenia from "./pages/cambiarContrasenia";
+import CambiarContrasenia from "./pages/CambiarContrasenia";
 
 function App() {
   return (
