@@ -1,3 +1,4 @@
+// client/src/context/AuthContext.jsx
 import { createContext, useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import { URL } from "../utils/url";
@@ -11,35 +12,46 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem("authToken");
 
-    if (token) {
-      const decodedUser = jwtDecode(token);
-      console.log(decodedUser);
-
-      setCurrentUser(decodedUser);
+    // Validamos que el token exista y tenga el formato JWT (3 partes separadas por puntos)
+    if (token && token.split('.').length === 3) {
+      try {
+        const decodedUser = jwtDecode(token);
+        setCurrentUser(decodedUser);
+      } catch (error) {
+        console.error("Token inválido en localStorage:", error);
+        localStorage.removeItem("authToken"); // Limpiamos basura
+      }
     }
     setLoading(false);
   }, []);
 
   const login = async (body) => {
-    const response = await fetch(`${URL}/usuarios/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
-    const data = await response.json();
+    try {
+      const response = await fetch(`${URL}/usuarios/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      const data = await response.json();
 
-    localStorage.setItem("authToken", data.logueado);
-    const decodedUser = jwtDecode(data.logueado);
-    setCurrentUser(decodedUser);
-    return decodedUser;
+      if (response.ok && data.logueado) {
+        localStorage.setItem("authToken", data.logueado);
+        const decodedUser = jwtDecode(data.logueado);
+        setCurrentUser(decodedUser);
+        return decodedUser;
+      } else {
+        throw new Error(data.message || "Error en login");
+      }
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error);
+      throw error;
+    }
   };
 
   const logout = () => {
-    localStorage.removeItem("authToken");
-    setCurrentUser(null);
-    setLoading(true);
+    localStorage.removeItem("authToken"); // 
+    setCurrentUser(null); // 
+    setLoading(false); // Cambiado a false para permitir navegación tras logout
   };
 
   const value = { currentUser, login, logout, loading };
